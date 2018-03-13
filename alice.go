@@ -1,4 +1,4 @@
-package alice
+package dialogs
 
 import (
 	"bytes"

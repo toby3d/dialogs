@@ -1,4 +1,4 @@
-package alice
+package dialogs
 
 type (
 	// Question содержит информацию о входящем запросе пользователя.
