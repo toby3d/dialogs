@@ -7,10 +7,11 @@ import (
 )
 
 // NewAnswer создаёт основу Answer для ответа, на основе входящего Question.
-func NewAnswer(question Question) Answer {
+func NewAnswer(question Question, text string) Answer {
 	return Answer{
-		Version: question.Version,
-		Session: question.Session,
+		Version:  question.Version,
+		Session:  question.Session,
+		Response: Response{Text: text},
 	}
 }
 
