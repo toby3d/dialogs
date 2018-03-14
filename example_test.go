@@ -27,7 +27,7 @@ var (
 			MessageID: 42,
 			New:       false,
 			SessionID: "1ab234cd-56e7890f-gh1j23k-45l6",
-			SkillID:   "ba8e8c64-1b44-4c66-b54c-3095cac48881",
+			SkillID:   "ab1c2d34-5e67-8f90-g12h-3456jkl78901",
 			UserID:    "1A2BC3456789D0E12F345GHJ67890K1LMN23OP4567QR8901234567ST89UV0W12",
 		},
 		Version: "1.0",
