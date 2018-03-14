@@ -17,7 +17,7 @@ go get -u github.com/toby3d/dialogs
 import "github.com/toby3d/dialogs"
 ```
 
-## Examples
+## Примеры
 Загляни в [секцию примеров в GoDoc](https://godoc.org/github.com/toby3d/dialogs#pkg-examples) или посмотри содержимое [example_test.go](/example_test.go).
 
 ## Нужна помощь?
