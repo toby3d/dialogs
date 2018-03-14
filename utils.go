@@ -15,6 +15,11 @@ func NewAnswer(question Question, text string) Answer {
 	}
 }
 
+// NewButton создаёт основу для Button.
+func NewButton(title string) Button {
+	return Button{Title: title}
+}
+
 // NewButtons создаёт новый массив Button.
 func NewButtons(buttons ...Button) []Button {
 	return buttons
