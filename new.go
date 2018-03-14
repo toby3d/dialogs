@@ -19,9 +19,9 @@ type (
 	Answers chan Answer
 )
 
-// Listen создаёт простой роутер для прослушивания входящих данных по вебхуку и
+// New создаёт простой роутер для прослушивания входящих данных по вебхуку и
 // возвращает два канала: для чтения запросов и отправки ответов соответственно.
-func Listen(addr, path string) (Questions, Answers) {
+func New(addr, path, certFile, keyFile string) (Questions, Answers) {
 	var err error
 	questions := make(chan Question)
 	answers := make(chan Answer)
@@ -48,9 +48,11 @@ func Listen(addr, path string) (Questions, Answers) {
 
 		var answer Answer
 		for answer = range answers {
-			if !strings.EqualFold(answer.Session.SessionID, question.Session.SessionID) ||
-				!strings.EqualFold(answer.Session.UserID, question.Session.UserID) ||
-				answer.Session.MessageID != question.Session.MessageID {
+			a := answer.Session
+			q := question.Session
+			if !strings.EqualFold(a.SessionID, q.SessionID) ||
+				!strings.EqualFold(a.UserID, q.UserID) ||
+				a.MessageID != q.MessageID {
 				dlog.Ln("Это не тот ответ...")
 				continue
 			}
@@ -73,14 +75,24 @@ func Listen(addr, path string) (Questions, Answers) {
 
 		dlog.Ln("Готово, ответ доставлен!")
 	}
+
 	handleFunc = http.TimeoutHandler(handleFunc, 1500*time.Millisecond, "oh no")
 
-	go func() {
-		dlog.Ln("Создаём простой роутер...")
-		if err = http.ListenAndServe(addr, handleFunc); err != nil {
-			log.Fatalln("Ошибка:", err.Error())
-		}
-	}()
+	go runServer(addr, certFile, keyFile, handleFunc)
 
 	return questions, answers
+}
+
+func runServer(addr, certFile, keyFile string, handleFunc http.RequestHandler) {
+	var err error
+	if certFile != "" && keyFile != "" {
+		dlog.Ln("Creating TLS router...")
+		err = http.ListenAndServeTLS(addr, certFile, keyFile, handleFunc)
+	} else {
+		dlog.Ln("Создаём простой роутер...")
+		err = http.ListenAndServe(addr, handleFunc)
+	}
+	if err != nil {
+		log.Fatalln("Ошибка:", err.Error())
+	}
 }
