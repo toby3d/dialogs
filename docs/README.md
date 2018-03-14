@@ -18,7 +18,7 @@ import "github.com/toby3d/dialogs"
 ```
 
 ## Examples
-Загляни в [секцию примеров в GoDoc](https://godoc.org/github.com/toby3d/dialogs#pkg-examples) или посмотри содержимое [example_test.go](example_test.go).
+Загляни в [секцию примеров в GoDoc](https://godoc.org/github.com/toby3d/dialogs#pkg-examples) или посмотри содержимое [example_test.go](/example_test.go).
 
 ## Нужна помощь?
 - [Открой новый issue](https://github.com/toby3d/dialogs/issues/new)
