@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kirillDanshin/dlog"
-	json "github.com/pquerna/ffjson/ffjson"
-	http "github.com/valyala/fasthttp"
+	"gitlab.com/kirillDanshin/dlog"
+	json "gitlab.com/pquerna/ffjson/ffjson"
+	http "gitlab.com/valyala/fasthttp"
 )
 
 type (

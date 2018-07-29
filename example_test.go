@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/toby3d/dialogs"
+	"gitlab.com/toby3d/dialogs"
 )
 
 var (
@@ -119,7 +119,7 @@ func ExampleNewButton() {
 	dataButton.Payload = payload
 
 	urlButton = dialogs.NewButton("я ссылка")
-	urlButton.URL = "https://toby3d.github.io"
+	urlButton.URL = "https://toby3d.gitlab.io"
 }
 
 func ExampleNewButtons() {
